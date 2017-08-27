@@ -1,9 +1,12 @@
-//import liraries
+import _ from 'lodash'
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, ListView, StyleSheet } from 'react-native';
+import { connect } from 'react-redux'
+import { todoFetch } from '../actions'
+import ListItem from './ListItem'
 
 // create a component
-class TodoLiist extends Component {
+class TodoList extends Component {
     render() {
         return (
             <View style={styles.container}>
@@ -23,5 +26,9 @@ const styles = StyleSheet.create({
     },
 });
 
-//make this component available to the app
-export default TodoLiist;
+const mapStateToProps = (state) => {
+    return {
+        prop: state.prop
+    }
+}
+export default connect(mapStateToProps, {todoFetch})(TodoList)
