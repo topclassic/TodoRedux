@@ -5,7 +5,7 @@ const INITIALSTATE = {}
 export default (state = INITIALSTATE, action) => {
     switch(action.type){
         case TODO_FETCH_SUCCESS:
-            console.log(action)
+            //console.log(action)
             return action.payload
 
         default:
