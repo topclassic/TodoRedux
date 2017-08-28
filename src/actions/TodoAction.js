@@ -17,14 +17,21 @@ export const todoFetch = () =>{
     }
 }
 
-export const todoCreate = ({ names, phone, shift}) => {
+export const todoCreate = ({ title, description, check}) => {
 
     return (dispatch) => {
-    firebase.database().ref(`/users/${currentUser.uid}/employees`)
-        .push({names ,phone, shift})
-        .then(()=> {
-            dispatch({type: TODO_CREATE})
-            Actions.todoList({type:'reset'})
+    axios.post('http://localhost:3000/todo',{
+        title,
+        description,
+        check
+    })
+        .then(response => {
+            dispatch({
+                type: TODO_CREATE,
+            });
+        })
+        .catch((error) => {
+            console.log(error);
         })
     }
 }
