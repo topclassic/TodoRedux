@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { View, Text, Picker, StyleSheet } from 'react-native';
 import { Card, CardSection, Input, Button} from './common'
 import { connect } from 'react-redux'
+import { todoUpdate } from '../actions'
 
 // create a component
 class TodoForm extends Component {
@@ -13,15 +14,17 @@ class TodoForm extends Component {
                     <Input
                         label="Title"
                         placeholder="title"
+                        value={this.props.title}
+                        onChangeText={value => this.props.todoUpdate({prop:'title',value})}
                        
                     />
                 </CardSection>
-
                 <CardSection>
                     <Input
                         label="Des"
                         placeholder="description"
-                    
+                        value={this.props.description}
+                        onChangeText={value => this.props.todoUpdate({prop:'description',value})}
                     />
                 </CardSection>
             </View>
@@ -37,4 +40,12 @@ const styles = StyleSheet.create({
     }
 });
 
-export default TodoForm
+const mapStateToProps = (state) => {
+    const { title, description, check} = state.todoForm
+    return {
+        title,
+        description,
+        check
+    }
+}
+export default connect(mapStateToProps, {todoUpdate})(TodoForm)

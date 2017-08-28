@@ -1,2 +1,3 @@
 export const TODO_FETCH_SUCCESS = 'TODO_FETCH_SUCCESS'
 export const TODO_CREATE = 'TODO_CREATE'
+export const TODO_UPDATE = 'TODO_UPDATE'
