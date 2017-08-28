@@ -1,14 +1,25 @@
 //import liraries
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { Card, CardSection, Input, Button} from './common'
+import { connect } from 'react-redux'
+import TodoForm from './TodoForm'
 
 // create a component
 class TodoCreate extends Component {
+    onButtonPress(){
+       
+    }
     render() {
         return (
-            <View style={styles.container}>
-                <Text>TodoCreate</Text>
-            </View>
+            <Card>
+                <TodoForm/>
+                <CardSection>
+                    <Button onPress={this.onButtonPress.bind(this)}>
+                        Create
+                    </Button> 
+                </CardSection>
+            </Card>
         );
     }
 }

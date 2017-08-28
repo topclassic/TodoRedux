@@ -16,3 +16,15 @@ export const todoFetch = () =>{
             })
     }
 }
+
+export const todoCreate = ({ names, phone, shift}) => {
+
+    return (dispatch) => {
+    firebase.database().ref(`/users/${currentUser.uid}/employees`)
+        .push({names ,phone, shift})
+        .then(()=> {
+            dispatch({type: TODO_CREATE})
+            Actions.todoList({type:'reset'})
+        })
+    }
+}
